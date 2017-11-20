@@ -38,6 +38,12 @@ func main() {
 		log.Fatal(err)
 	}
 
+	// Generate tooltip by id map
+	tooltipsById := make(map[int]string)
+	for _, feature := range places.Features {
+		tooltipsById[feature.Properties.OBJECTID] = feature.Properties.TOOLTIP
+	}
+
 	//De-seeds randomization to produce new values each iteration
 	rand.Seed(time.Now().UnixNano())
 
@@ -64,33 +70,20 @@ func main() {
 		}
 
 		//Produces new start/destination locations if associated TOOLTIP does not exist
-		for get_TOOLTIP(places, START_ID) == "" || get_TOOLTIP(places, DEST_ID) == "" {
+		for tooltipsById[START_ID] == "" || tooltipsById[DEST_ID] == "" {
 			START_ID = random_int(2001, 178154)
 			DEST_ID = random_int(2001, 178154)
 		}
 
 		//Prints result
-		fmt.Printf("\t\t{ \"ID\": %v,  \"START\": \"%v\", ", i, get_TOOLTIP(places, START_ID))
-		fmt.Printf("\"DEST\": \"%v\", \"DEPART_TIME\": %v, ", get_TOOLTIP(places, DEST_ID), DEPART_TIME)
+		fmt.Printf("\t\t{ \"ID\": %v,  \"START\": \"%v\", ", i, tooltipsById[START_ID])
+		fmt.Printf("\"DEST\": \"%v\", \"DEPART_TIME\": %v, ", tooltipsById[DEST_ID], DEPART_TIME)
 		fmt.Printf(" \"ENVIR\": %v, \"CST\": %v, \"TIME\": %v }, \n", ENVIR, CST, TIME)
 	}
 
 	fmt.Println("\t]")
 	fmt.Println("}")
 
-}
-
-//Returns TOOLTIP of an intersection based on assocaited OBJECTID
-func get_TOOLTIP(data FeatureCollection, id int) string {
-	var return_ID = ""
-
-	for _, start := range data.Features {
-		if start.Properties.OBJECTID == id {
-			return_ID = start.Properties.TOOLTIP
-		}
-	}
-
-	return return_ID
 }
 
 //Produces a random number from [min,max]
