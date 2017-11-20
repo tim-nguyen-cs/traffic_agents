@@ -11,18 +11,17 @@ type Agent interface {
 
 type agent struct {
 	ID int
-	
-	START_ID int 
-	DEST_ID int
-	DEPART_TIME int	
+
+	START_ID    int
+	DEST_ID     int
+	DEPART_TIME int
 
 	START_LOCATION string
-	DEST_LOCATION string	
+	DEST_LOCATION  string
 
 	ENVIR int
-	CST int
-	TIME int
-	
+	CST   int
+	TIME  int
 }
 
 func (a agent) Id() string {
