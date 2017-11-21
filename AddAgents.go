@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"math/rand"
 	"time"
+	s "strings"
 
 	"bufio"
 	"encoding/json"
@@ -83,7 +84,7 @@ func main() {
 		}
 
 		//Produces new start/destination locations if associated TOOLTIP does not exist
-		for ID_TO_TOOLTIP[START_ID] == "" || ID_TO_TOOLTIP[DEST_ID] == "" {
+		for ID_TO_TOOLTIP[START_ID] == "" || ID_TO_TOOLTIP[DEST_ID] == "" || s.Contains(ID_TO_TOOLTIP[START_ID], "\"A\"") || s.Contains(ID_TO_TOOLTIP[DEST_ID], "\"A\"") {
 			START_ID = random_int(2001, 178154)
 			DEST_ID = random_int(2001, 178154)
 		}
@@ -110,7 +111,7 @@ func main() {
 			DEST_ID = random_int(2001, 178154)
 		}
 
-		for ID_TO_TOOLTIP[START_ID] == "" || ID_TO_TOOLTIP[DEST_ID] == "" {
+		for ID_TO_TOOLTIP[START_ID] == "" || ID_TO_TOOLTIP[DEST_ID] == "" || s.Contains(ID_TO_TOOLTIP[START_ID], "\"A\"") || s.Contains(ID_TO_TOOLTIP[DEST_ID], "\"A\"") {
 			START_ID = random_int(2001, 178154)
 			DEST_ID = random_int(2001, 178154)
 		}
