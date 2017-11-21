@@ -38,10 +38,10 @@ func main() {
 		log.Fatal(err)
 	}
 
-	// Generate tooltip by id map
-	tooltipsById := make(map[int]string)
+	// Generate TOOLTIP via OBJECTID via associative data type
+	ID_TO_TOOLTIP := make(map[int]string)
 	for _, feature := range places.Features {
-		tooltipsById[feature.Properties.OBJECTID] = feature.Properties.TOOLTIP
+		ID_TO_TOOLTIP[feature.Properties.OBJECTID] = feature.Properties.TOOLTIP
 	}
 
 	//De-seeds randomization to produce new values each iteration
@@ -70,14 +70,14 @@ func main() {
 		}
 
 		//Produces new start/destination locations if associated TOOLTIP does not exist
-		for tooltipsById[START_ID] == "" || tooltipsById[DEST_ID] == "" {
+		for ID_TO_TOOLTIP[START_ID] == "" || ID_TO_TOOLTIP[DEST_ID] == "" {
 			START_ID = random_int(2001, 178154)
 			DEST_ID = random_int(2001, 178154)
 		}
 
 		//Prints result
-		fmt.Printf("\t\t{ \"ID\": %v,  \"START\": \"%v\", ", i, tooltipsById[START_ID])
-		fmt.Printf("\"DEST\": \"%v\", \"DEPART_TIME\": %v, ", tooltipsById[DEST_ID], DEPART_TIME)
+		fmt.Printf("\t\t{ \"ID\": %v,  \"START\": \"%v\", ", i, ID_TO_TOOLTIP[START_ID])
+		fmt.Printf("\"DEST\": \"%v\", \"DEPART_TIME\": %v, ", ID_TO_TOOLTIP[DEST_ID], DEPART_TIME)
 		fmt.Printf(" \"ENVIR\": %v, \"CST\": %v, \"TIME\": %v }, \n", ENVIR, CST, TIME)
 	}
 
