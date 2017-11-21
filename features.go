@@ -10,7 +10,7 @@ type Feature struct {
 }
 
 type PropertyList struct {
-	TOOLTIP string
+	TOOLTIP  string
 	OBJECTID int
 }
 
@@ -21,5 +21,3 @@ func (p *PropertyList) get_TOOLTIP() string {
 func (p *PropertyList) get_OBJECTID() int {
 	return p.OBJECTID
 }
-
-

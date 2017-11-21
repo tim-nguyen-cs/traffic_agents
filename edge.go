@@ -10,10 +10,10 @@ type Edge interface {
 }
 
 type edge struct {
-	weight float64
-	from string
-	to string
-	time int
+	weight   float64
+	from     string
+	to       string
+	time     int
 	capacity int
 }
 
@@ -39,4 +39,4 @@ func (e edge) AddAgent() {
 
 func (e edge) RemoveAgent() {
 	e.capacity = e.capacity - 1
-} 
+}
