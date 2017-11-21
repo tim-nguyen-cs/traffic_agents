@@ -1,41 +1,36 @@
 package main
 
-import "strconv"
-
 type Agent interface {
-	Id() string
+	Id() int
 	Start() string
 	Destination() string
-	LeaveTime() int
+	LeaveTime() float32
 }
 
 type agent struct {
 	ID int
+	DEPART_TIME float32
 
-	START_ID    int
-	DEST_ID     int
-	DEPART_TIME int
-
-	START_LOCATION string
-	DEST_LOCATION  string
+	START string
+	DEST  string
 
 	ENVIR int
 	CST   int
 	TIME  int
 }
 
-func (a agent) Id() string {
-	return strconv.Itoa(a.ID)
+func (a agent) Id() int {
+	return a.ID
 }
 
 func (a agent) Start() string {
-	return a.START_LOCATION
+	return a.START
 }
 
 func (a agent) Destination() string {
-	return a.DEST_LOCATION
+	return a.DEST
 }
 
-func (a agent) LeaveTime() int {
+func (a agent) LeaveTime() float32 {
 	return a.DEPART_TIME
 }
