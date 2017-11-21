@@ -11,7 +11,7 @@ Each OBJECTID and priority factor is developed randomly using rand.Intn().
  The AddAgent.go program incorporates flags to parse command-line arguments, specifically requiring the file name of the input data and the number of agents wanted to be produced. The program then writes to an "agents.json" file in the required formatting. Please ensure to include teh features.go package.
  
  ```
-[EXECUTION_CODE} -input (GeoJSON file to parse, string) -num (Number of agents to produce, int)
+[EXECUTION_CODE] -input (GeoJSON file to parse, string) -num (Number of agents to produce, int)
   
 ```
 
@@ -19,7 +19,7 @@ Each OBJECTID and priority factor is developed randomly using rand.Intn().
  The simulate.go program incorporates flags to parse command-line arguments, specifically requiring the file name of the input data. The program then writes to an "agents.json" file in the required formatting.
  
  ```
-[EXECUTION_CODE} -input (GeoJSON file to parse, string)
+[EXECUTION_CODE] -input (GeoJSON file to parse, string)
  ```
 ## Errors
   1) Simulation does not yet create or add Edges
